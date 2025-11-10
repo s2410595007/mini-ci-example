@@ -53,7 +53,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: sigridkl/app:latest
+          tags: sigridkl/app:${{ steps.vars.outputs.sha_short }}
 
       # Declare variables to store branch name and short Git commit SHA
       - name: Declare variables
@@ -61,5 +61,4 @@ jobs:
         shell: bash
         run: |
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-          tags: [user]/app:${{ steps.vars.outputs.sha_short }}
         
